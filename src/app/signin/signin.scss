@@ -1,0 +1,36 @@
+.card{
+  width:min(520px, 100%); display:flex; flex-direction:column; gap:1.1rem;
+  background:transparent;
+}
+.brand{ font-size:1.75rem; margin:0 0 .2rem; color:#cfe9d9; font-weight:700; }
+.title{ margin:.1rem 0 0; font-size:1.6rem; }
+.sub{ margin:0 0 .6rem; color:#9aa3af; }
+
+.grid.gap{ display:grid; gap:1rem; }
+.row{ margin:.2rem 0 .4rem; }
+
+.foot{ margin:.7rem 0 0; font-size:.95rem; color:#9aa3af; }
+.link{ color:#6ee7a5; text-decoration:none; }
+.link:hover{ text-decoration:underline; }
+
+:host { display:block; min-height:100vh; }
+.wrap{
+  display:grid; grid-template-columns:1fr 1fr; min-height:100vh;
+  background:#12151a;
+}
+.left{
+  background:#4cc9a8; /* green-ish like screenshot */
+  display:flex; align-items:center; justify-content:center; padding:2rem;
+}
+.art{ width:min(560px, 86%); height:auto; }
+
+.right{
+  background:#171a20; color:#e6e8ec;
+  display:flex; align-items:center; justify-content:center; padding:2rem;
+}
+
+@media (max-width: 900px){
+  .wrap{ grid-template-columns:1fr; }
+  .left{ padding:2.5rem 1.5rem; }
+  .right{ padding:2rem 1.25rem; }
+}

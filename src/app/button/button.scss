@@ -1,0 +1,8 @@
+.btn{
+  border:none; padding:.95rem 1.2rem; border-radius:.7rem; font-weight:600;
+  background:#44cf86; color:#0d1117; cursor:pointer; transition:transform .05s,opacity .2s;
+}
+.btn:hover{ opacity:.95; }
+.btn:active{ transform:translateY(1px); }
+.btn-ghost{ background:transparent; color:#c9d1d9; border:1px solid #3e4858; }
+.full{ width:100%; }

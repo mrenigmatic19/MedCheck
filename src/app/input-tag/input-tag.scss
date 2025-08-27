@@ -1,0 +1,8 @@
+.field { display:flex; flex-direction:column; gap:.5rem; }
+.label { font-size:.9rem; color:#aeb4c0; }
+.control{
+  width:100%; padding:.9rem 1rem; border:1px solid #3e4858; border-radius:.6rem;
+  background:#20242b; color:#e6e8ec; outline:none; transition:border .15s;
+}
+.control::placeholder{ color:#7f8895; }
+.control:focus{ border-color:#6ee7a5; }

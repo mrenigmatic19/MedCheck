@@ -1,0 +1,12 @@
+<article class="card">
+      <div class="thumb"></div>
+      <div class="body">
+        <h4 class="title">{{ course.title }}</h4>
+        <div class="meta">{{ course.hours }} · Last updated {{ course.updated }}</div>
+        <div class="row">
+          <app-satr-card [rating]="course.rating"></app-satr-card>
+          <span class="reviews">({{ course.reviews | number }}) reviews</span>
+          <span class="badge" *ngIf="course.badge">{{ course.badge }}</span>
+        </div>
+      </div>
+    </article>

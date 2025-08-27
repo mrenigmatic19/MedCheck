@@ -1,0 +1,20 @@
+<div class="card" [class.blue]="data.color==='blue'"
+                 [class.orange]="data.color==='orange'"
+                 [class.purple]="data.color==='purple'"
+                 [class.green]="data.color==='green'">
+
+  <div class="rating">
+    <span class="value">{{ data.rating }}</span>
+    <app-satr-card [rating]="data.rating"></app-satr-card>
+  </div>
+
+  <p class="text">“{{ data.text }}”</p>
+
+  <div class="person">
+    <img *ngIf="data.avatar" class="avatar" [src]="data.avatar" alt="">
+    <div class="meta">
+      <div class="name">{{ data.name }}</div>
+      <div class="country">{{ data.country }}</div>
+    </div>
+  </div>
+</div>

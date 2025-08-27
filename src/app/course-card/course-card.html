@@ -1,0 +1,15 @@
+<article class="cc">
+  <div class="thumb">
+    <img [src]="course.img" [alt]="course.title" />
+    <div class="chip">{{ course.progress }}</div>
+  </div>
+  <div class="content">
+    <h4 class="title">{{ course.title }}</h4>
+    <div class="sub">in <span class="ln">LEARNING</span></div>
+    <div class="meta">
+      <span>★ {{ course.rating }}</span>
+      <span>({{ course.reviews }} reviews | {{ course.enrolled }} Enrolled)</span>
+    </div>
+    <div class="foot">{{ course.level }} · {{ course.duration }}</div>
+  </div>
+</article>

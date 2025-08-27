@@ -1,0 +1,45 @@
+:root{--bg:#0b0f14;--panel:#141a22;--panel-2:#171e27;--muted:#9aa4b2;--text:#e7e7e7;--text-weak:#c7ced8;
+--accent:#6b73ff;--success:#35c174;--stroke:#232b36;--shadow:0 6px 24px rgba(0,0,0,.35);--radius:14px;}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 Inter,system-ui;}
+
+.header-bar{display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--stroke);
+background:linear-gradient(0deg,rgba(107,115,255,.06),rgba(107,115,255,.06))} .brand{font-weight:600}
+.crumbs{display:flex;gap:8px;align-items:center;color:var(--muted)} .crumbs a{color:#c9d7ff;text-decoration:none}
+.search{margin-left:auto;position:relative;width:min(680px,55vw)}
+.search input{width:100%;height:42px;border-radius:999px;border:1px solid var(--stroke);background:#0f141b;color:var(--text);padding:0 44px}
+.search:focus-within input{border-color:var(--accent);box-shadow:0 0 0 3px rgba(107,115,255,.25)}
+.avatar{width:32px;height:32px;border-radius:50%;background:#222}
+
+.course-page{display:grid;grid-template-columns:1fr 340px;gap:22px;padding:18px 20px 24px}
+
+.player-card{background:var(--panel);border:1px solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.player{position:relative;background:radial-gradient(1200px 400px at 80% -20%,rgba(107,115,255,.06),transparent)}
+.player video{width:100%;display:block;aspect-ratio:16/9;background:#0e131a;border-bottom:1px solid var(--stroke)}
+.overlay-play{position:absolute;inset:0;display:grid;place-items:center;background:transparent;border:0;cursor:pointer}
+.overlay-play .btn{width:74px;height:74px;border-radius:50%;background:rgba(255,255,255,.18);backdrop-filter:blur(2px);display:grid;place-items:center}
+.overlay-play .btn::before{content:"";display:block;margin-left:3px;border-style:solid;border-width:12px 0 12px 20px;border-color:transparent transparent transparent white}
+.overlay-play .btn[data-state="playing"]::before{border-width:0;margin:0;width:18px;height:18px;background:white;
+clip-path:polygon(0 0, 40% 0, 40% 100%, 0 100%, 0 0, 60% 0, 100% 0, 100% 100%, 60% 100%, 60% 0)}
+
+.tabs{display:flex;gap:18px;align-items:center;padding:14px 16px 0 16px;border-top:1px solid var(--stroke);
+background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(12,16,22,.35) 100%)}
+.tab{appearance:none;border:0;background:transparent;color:var(--text-weak);padding:10px 2px;cursor:pointer;font-weight:500;letter-spacing:.2px;position:relative}
+.tab:hover{color:var(--text)} .tab.active{color:var(--text)}
+.tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:2px;
+background:linear-gradient(90deg,rgba(107,115,255,0),rgba(107,115,255,.9),rgba(107,115,255,0));border-radius:2px}
+
+.tab-panels{padding:18px 16px 22px 16px}
+.panel-card{background:var(--panel-2);border:1px solid var(--stroke);border-radius:var(--radius);padding:16px}
+.learn ul{margin:10px 0 0 0;padding-left:18px;color:var(--text-weak)} .learn li{margin:8px 0}
+
+.sidebar{background:var(--panel);border:1px solid var(--stroke);border-radius:var(--radius);padding:14px 12px;box-shadow:var(--shadow);
+height:max(520px,calc(100% - 2px));position:sticky;top:16px;align-self:start}
+.sidebar h3{margin:4px 8px 10px;font-size:16px;font-weight:600;color:#f2f5f9}
+
+/* optional helpers if CourseContent does not style rows; otherwise rely on its own CSS */
+app-course-content{display:block;margin:8px 6px 14px}
+
+button,[role="tab"]{outline:none}
+button:focus-visible,[role="tab"]:focus-visible{box-shadow:0 0 0 3px rgba(107,115,255,.35);border-radius:8px}
+
+@media (max-width:1100px){.course-page{grid-template-columns:1fr}.sidebar{position:static;height:auto}}

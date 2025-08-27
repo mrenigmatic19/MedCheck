@@ -1,0 +1,96 @@
+<div class="filter-card">
+  <h3 class="title">Filter</h3>
+
+  <!-- Duration -->
+  <section class="block">
+    <header (click)="0" class="block-head">
+      <span>Duration</span>
+      <span class="count">({{ sumCount(duration) }})</span>
+    </header>
+
+    <label class="row all">
+      <input type="checkbox"
+             [checked]="allChecked('duration', duration)"
+             (change)="toggleAll('duration', duration)" />
+      <span>All</span>
+      <span class="muted">({{ sumCount(duration) }})</span>
+    </label>
+
+    <label class="row" *ngFor="let d of duration">
+      <input type="checkbox"
+             [checked]="isChecked('duration', d.id)"
+             (change)="toggle('duration', d.id)" />
+      <span>{{ d.label }}</span>
+      <span class="muted">({{ d.count || 0 }})</span>
+    </label>
+  </section>
+
+  <!-- Rating -->
+  <section class="block">
+    <header class="block-head">
+      <span>Rating</span>
+      <span class="count">({{ sumCount(rating) }})</span>
+    </header>
+
+    <label class="row all">
+      <input type="checkbox"
+             [checked]="allChecked('rating', rating)"
+             (change)="toggleAll('rating', rating)" />
+      <span>All</span>
+      <span class="muted">({{ sumCount(rating) }})</span>
+    </label>
+
+    <label class="row" *ngFor="let r of rating">
+      <input type="checkbox"
+             [checked]="isChecked('rating', r.id)"
+             (change)="toggle('rating', r.id)" />
+      <span class="stars" [attr.data-stars]="r.label"></span>
+      <span class="muted">({{ r.count || 0 }})</span>
+    </label>
+  </section>
+
+  <!-- Published Date -->
+  <section class="block">
+    <header class="block-head">
+      <span>Published Date</span>
+      <span class="count">({{ sumCount(published) }})</span>
+    </header>
+
+    <label class="row all">
+      <input type="checkbox"
+             [checked]="allChecked('published', published)"
+             (change)="toggleAll('published', published)" />
+      <span>All</span>
+      <span class="muted">({{ sumCount(published) }})</span>
+    </label>
+
+    <label class="row" *ngFor="let p of published">
+      <input type="checkbox"
+             [checked]="isChecked('published', p.id)"
+             (change)="toggle('published', p.id)" />
+      <span>{{ p.label }}</span>
+      <span class="muted">({{ p.count || 0 }})</span>
+    </label>
+  </section>
+
+  <!-- Course Level -->
+  <section class="block">
+    <header class="block-head">
+      <span>Course Level</span>
+    </header>
+
+    <label class="row all">
+      <input type="checkbox"
+             [checked]="allChecked('level', level)"
+             (change)="toggleAll('level', level)" />
+      <span>All</span>
+    </label>
+
+    <label class="row" *ngFor="let l of level">
+      <input type="checkbox"
+             [checked]="isChecked('level', l.id)"
+             (change)="toggle('level', l.id)" />
+      <span>{{ l.label }}</span>
+    </label>
+  </section>
+</div>

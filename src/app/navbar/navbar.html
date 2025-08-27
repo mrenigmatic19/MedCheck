@@ -1,0 +1,62 @@
+<header class="nav">
+  <div class="nav-left">
+    <div class="brand">Product Name</div>
+    <div class="search">
+      <svg viewBox="0 0 24 24" class="ic"><circle cx="11" cy="11" r="7" stroke="currentColor" fill="none" stroke-width="2"/><path d="M20 20L17 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input placeholder="Search Courses" />
+    </div>
+  </div>
+
+  <div class="nav-right">
+    <button class="icon" (click)="toggleNoti()" aria-label="Notifications">
+      <svg viewBox="0 0 24 24" class="ic"><path d="M12 22a2 2 0 0 0 2-2H10a2 2 0 0 0 2 2Zm8-6v-4a8 8 0 1 0-16 0v4l-2 2v1h20v-1Z" fill="currentColor"/></svg>
+      <span class="dot"></span>
+    </button>
+
+    <div class="avatar" (click)="toggleProfile()">
+      <img src="assets/avatar.jpg" alt="Profile"/>
+    </div>
+
+    <!-- Notification dropdown -->
+    <div class="dropdown noti" [class.show]="showNoti">
+      <h4>Notifications</h4>
+      <div class="noti-list">
+        <app-nav-card
+          title='Your enrolled course "GCP Cloud Certification" is expiring soon'
+          subtitle="You have 3 days left to complete it" icon="⏰">
+        </app-nav-card>
+
+        <app-nav-card
+          title='Upcoming Live Session!'
+          subtitle='UX case studies starts 5:00PM Today.' icon="📅">
+        </app-nav-card>
+
+        <app-nav-card
+          title="Haven’t Seen You in a While!"
+          subtitle='Your course "React Basics" is waiting.' icon="👋" tone="success">
+        </app-nav-card>
+
+        <app-nav-card
+          title="New Course Alert!"
+          subtitle='Complete Web Design Course – Enroll Now!' icon="🆕">
+        </app-nav-card>
+      </div>
+    </div>
+
+    <!-- Profile dropdown -->
+    <div class="dropdown profile" [class.show]="showProfile">
+      <div class="user-row">
+        <img src="assets/avatar.jpg" alt="">
+        <div>
+          <div class="name">Harry Shimron</div>
+          <div class="muted">DC Software Engineer II · Track: Design</div>
+        </div>
+      </div>
+      <a href="#">My Profile</a>
+      <a href="#">Admin Console</a>
+      <a href="#">My Courses</a>
+      <a href="#">Blog</a>
+      <a href="#">Log Out</a>
+    </div>
+  </div>
+</header>

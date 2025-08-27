@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+
+<div class="page">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <app-filter
+      [duration]="durationOpts"
+      [rating]="ratingOpts"
+      [published]="publishedOpts"
+      [level]="levelOpts"
+      [state]="filters()"
+      (stateChange)="onFiltersChange($event)">
+    </app-filter>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="header-row">
+      <h2>{{ total() }} Results for "{{ query() }}"</h2>
+
+      <div class="sort">
+        <span>Sort:</span>
+       <select [ngModel]="selectedSort()" (ngModelChange)="selectedSort.set($event)">
+  <option *ngFor="let opt of sortOptions" [value]="opt">{{ opt }}</option>
+</select>
+
+      </div>
+    </div>
+
+    <div class="pill-row">
+      <span class="pill">Beginner</span>
+      <span class="pill">6 months</span>
+    </div>
+
+    <section class="grid">
+      <app-course-card
+        *ngFor="let c of paged()"
+        [course]="c">
+      </app-course-card>
+    </section>
+
+    <div class="footer">
+      <span class="total">TOTAL RECORDS: {{ total() }}</span>
+
+      <nav class="pager" *ngIf="pages() > 1">
+        <button class="icon" [disabled]="page()===1" (click)="page.set(page()-1)">‹</button>
+        <button
+          class="page-btn"
+          *ngFor="let p of [].constructor(pages()); let i = index"
+          [class.active]="page()===(i+1)"
+          (click)="page.set(i+1)">
+          {{ i+1 }}
+        </button>
+        <button class="icon" [disabled]="page()===pages()" (click)="page.set(page()+1)">›</button>
+      </nav>
+    </div>
+  </main>
+</div>

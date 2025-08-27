@@ -1,0 +1,84 @@
+<!-- Breadcrumb + search (optional, lightweight) -->
+<header class="header-bar">
+  <div class="brand">Product Name</div>
+  <nav class="crumbs">
+    <a href="#">Home</a><span>›</span><a class="muted" href="#">Google Data Analytics</a>
+  </nav>
+  <div class="search"><input placeholder="Search Courses" aria-label="Search Courses"></div>
+  <div class="avatar" aria-hidden="true"></div>
+</header>
+
+<!-- Layout -->
+<div class="course-page">
+  <!-- Main video + tabs -->
+  <div class="player-card">
+    <div class="player">
+      <video
+        #videoRef
+        [src]="currentSrc"
+        controls
+        preload="metadata"
+        (play)="onPlay()"
+        (pause)="onPause()"
+        aria-label="Course video">
+      </video>
+
+      <!-- Big center play/pause button over video -->
+      <button class="overlay-play" type="button" (click)="togglePlay()" aria-label="Toggle play">
+        <span class="btn" [attr.data-state]="isPlaying ? 'playing' : 'paused'"></span>
+      </button>
+    </div>
+
+    <!-- Tabs -->
+    <section class="tabs" role="tablist" aria-label="Course sections">
+      <button type="button" class="tab" role="tab"
+              [class.active]="isTab('overview')"
+              [attr.aria-selected]="isTab('overview')"
+              (click)="setTab('overview')">Overview</button>
+
+      <button type="button" class="tab" role="tab"
+              [class.active]="isTab('author')"
+              [attr.aria-selected]="isTab('author')"
+              (click)="setTab('author')">Author Details</button>
+
+      <button type="button" class="tab" role="tab"
+              [class.active]="isTab('testimonials')"
+              [attr.aria-selected]="isTab('testimonials')"
+              (click)="setTab('testimonials')">Testimonials</button>
+    </section>
+
+    <!-- Panels -->
+    <div class="tab-panels">
+      <section *ngIf="isTab('overview')" class="panel-card learn">
+        <h3>What you'll Learn</h3>
+        <ul>
+          <li>Gain an immersive understanding of analytics practices used by junior/associate data analysts.</li>
+          <li>Learn key analytical skills (cleaning, analysis, visualization) and tools (spreadsheets, SQL, R, Tableau).</li>
+          <li>Clean/organize data and complete analysis using spreadsheets, SQL and R.</li>
+          <li>Visualize and present findings in dashboards and presentations.</li>
+        </ul>
+      </section>
+
+      <section *ngIf="isTab('author')" class="panel-card">
+        <h3>Author Details</h3>
+        <p class="muted">Short bio and instructor information.</p>
+      </section>
+
+      <section *ngIf="isTab('testimonials')" class="grid">
+        <app-testimonial-card *ngFor="let t of items" [data]="t"></app-testimonial-card>
+      </section>
+    </div>
+  </div>
+
+  <!-- Sidebar: reuse CourseContent -->
+  <aside class="sidebar">
+    <h3>Course Content</h3>
+
+    <!-- Your CourseContent component should expose an output for item selection.
+         Common patterns: (selectLecture) or (itemClick). Adjust the binding below to your API. -->
+    <app-course-content
+      *ngFor="let s of sections; let si = index"
+      [section]="s">
+      </app-course-content>
+  </aside>
+</div>

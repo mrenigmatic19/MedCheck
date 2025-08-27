@@ -1,0 +1,74 @@
+
+<section class="hero">
+  <div class="left">
+    <h1 class="title">{{ title }}</h1>
+    <p class="subtitle">{{ subtitle }}</p>
+    <p class="creator">Created by <a href="#">{{ creator }}</a></p>
+    <button class="cta">Enroll Now</button>
+    <div class="enrolled">{{ stats.enrolled | number }} already enrolled</div>
+  </div>
+  <div class="right">
+    <div class="ring"></div><div class="ring small"></div>
+  </div>
+</section>
+
+<!-- METRICS BAR -->
+<section class="metrics">
+  <div class="metric"><div class="label">Level</div><div class="value">{{ stats.level }}</div></div>
+  <div class="metric"><div class="label">Rating</div><div class="value">{{ stats.rating }} ★ ({{ stats.reviews }} reviews)</div></div>
+  <div class="metric"><div class="label">Duration</div><div class="value">{{ stats.duration }}</div></div>
+  <div class="metric"><div class="label">Flexible Schedule</div><div class="value">{{ stats.schedule }}</div></div>
+</section>
+<!-- TABS -->
+<section class="tabs" role="tablist" aria-label="Course sections">
+  <button type="button" class="tab"
+          [class.active]="isTab('overview')"
+          (click)="setTab('overview')" role="tab"
+          [attr.aria-selected]="isTab('overview')">Overview</button>
+
+  <button type="button" class="tab"
+          [class.active]="isTab('content')"
+          (click)="setTab('content')" role="tab"
+          [attr.aria-selected]="isTab('content')">Course Content</button>
+
+  <button type="button" class="tab"
+          [class.active]="isTab('author')"
+          (click)="setTab('author')" role="tab"
+          [attr.aria-selected]="isTab('author')">Author Details</button>
+
+  <button type="button" class="tab"
+          [class.active]="isTab('testimonials')"
+          (click)="setTab('testimonials')" role="tab"
+          [attr.aria-selected]="isTab('testimonials')">Testimonials</button>
+</section>
+
+<!-- TAB PANES -->
+<section class="content">
+  <app-overview *ngIf="isTab('overview')"></app-overview>
+
+  <section *ngIf="isTab('content')" class="panel">
+    <div class="header">
+      <div>7 Sections · 25 Lectures · 1h 30m total length</div>
+      <button class="link" type="button">Expand all sections</button>
+    </div>
+    <app-course-content *ngFor="let s of sections" [section]="s"></app-course-content>
+  </section>
+
+  <app-author-detail *ngIf="isTab('author')"></app-author-detail>
+
+  <section *ngIf="isTab('testimonials')" class="grid"> 
+    <app-testimonial-card *ngFor="let t of items" [data]="t"></app-testimonial-card>
+  </section>
+</section>
+
+
+<!-- RELATED COURSE CARDS (always visible below tabs) -->
+<section class="panel related">
+  <h3>Related Courses</h3>
+  <div class="stack">
+    <app-related-course-card
+      *ngFor="let r of courses"
+      [course]="r">
+    </app-related-course-card>
+  </div>
+</section>

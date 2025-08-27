@@ -1,0 +1,6 @@
+.mc{background:linear-gradient(145deg,#2b2f37 0%, #262a31 100%); border:1px solid #353b46;
+   padding:1rem; border-radius:1rem; min-height:120px; position:relative; overflow:hidden}
+.mc::after{content:""; position:absolute; right:-20px; bottom:-20px; width:120px; height:120px; border:2px solid #3b4350; border-radius:50%}
+.top{color:#cfd6e4; font-size:.95rem}
+.num{font-size:2.2rem; font-weight:800; margin:.25rem 0 .4rem}
+.view{font-size:.85rem; color:#99f1c9}

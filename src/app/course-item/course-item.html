@@ -1,0 +1,8 @@
+<div class="lecture">
+  <div class="icon" [class.doc]="item.type==='doc'">
+    <i *ngIf="item.type==='video'" class="pi pi-play-circle"></i>
+    <i *ngIf="item.type==='doc'" class="pi pi-file"></i>
+  </div>
+  <div class="ltitle">{{ item.title }}</div>
+  <div class="lmins">{{ item.minutes }}</div>
+</div>

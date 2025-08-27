@@ -1,0 +1,17 @@
+  <p-carousel
+      [value]="items"
+      [numVisible]="numVisible"
+      [numScroll]="numScroll"
+      [circular]="circular"
+      [responsiveOptions]="responsiveOptions"
+      [showIndicators]="showIndicators"
+      containerClass="p-0"
+      contentClass="gap-3"
+    >
+      <ng-template pTemplate="item" let-it>
+        <!-- render whatever the page provides -->
+        <ng-container
+          *ngTemplateOutlet="itemTemplate; context: {$implicit: it}">
+        </ng-container>
+      </ng-template>
+    </p-carousel>

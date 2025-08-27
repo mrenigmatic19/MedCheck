@@ -1,0 +1,7 @@
+.ban{background:linear-gradient(90deg,#1dbf93 0%, #15a37c 60%); padding:1.1rem 0; position:relative}
+.ban::before,.ban::after{content:""; position:absolute; inset:0; background:
+  linear-gradient(135deg, rgba(255,255,255,.08) 15%, transparent 15%) left/120px 120px repeat-x;}
+.ban .inner{max-width:1200px; margin:0 auto; padding:0 1rem}
+.bar{height:6px; background:#ffd95e; margin:.25rem 0 1rem; width:43%}
+.title{display:inline-block; background:#0f1115; border:2px solid #cfe9d9; color:#cfe9d9;
+  padding:.4rem .9rem; font-weight:900; letter-spacing:.06em}

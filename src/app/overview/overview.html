@@ -1,0 +1,23 @@
+<section class="panel">
+  <h3>What you'll Learn</h3>
+  <ul class="bullets">
+    <li *ngFor="let line of whatYoullLearn">{{ line }}</li>
+  </ul>
+
+  <h3>Skills you'll gain</h3>
+  <div class="chips">
+    <span class="chip" *ngFor="let s of skills">{{ s }}</span>
+  </div>
+
+  <h3>Requirements</h3>
+  <ul class="bullets">
+    <li *ngFor="let r of requirements">{{ r }}</li>
+  </ul>
+
+  <h3>Description</h3>
+  <p class="muted">{{ descriptionTop }}</p>
+
+  <div class="quotes">
+    <div class="quote" *ngFor="let q of topReviews">“{{ q }}”</div>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+.section {
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+}
+.section summary {
+  list-style: none;
+  display: flex; justify-content: space-between;
+  align-items: center; font-weight: 600; cursor: pointer;
+}
+.section[open] summary {
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  padding-bottom: 8px;
+}

@@ -1,0 +1,14 @@
+<p>blog-card works!</p>
+<article class="bc">
+  <div class="thumb"><img [src]="img" [alt]="title"></div>
+  <div class="content">
+    <h4 class="title">{{title}}</h4>
+    <p class="desc">{{tags}}</p>
+    <div class="author">
+      <img src="assets/avatar.jpg" alt=""> 
+      <div><div class="name">{{author}}</div><div class="role">{{role}}</div></div>
+      <div class="spacer"></div>
+      <div class="stars">★ {{rating}} <span class="muted">({{reviews}})</span></div>
+    </div>
+  </div>
+</article>

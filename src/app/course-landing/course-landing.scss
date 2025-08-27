@@ -1,0 +1,98 @@
+:host{
+  display:block;
+  background:#0b0f14;
+  color:#e7e7e7;
+  font-family:Inter,system-ui,sans-serif;
+}
+
+/* hero */
+.hero{
+  position:relative;            /* create stacking context */
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:20px;
+  padding:10px 0 20px;
+  background:radial-gradient(1200px 400px at 80% -20%,rgba(119,99,255,.06),transparent);
+  z-index:0;                    /* sit behind tabs */
+  overflow:hidden;              /* keep absolute rings inside */
+}
+.title{margin:8px 0 6px;font-size:2rem}
+.subtitle{opacity:.9;max-width:780px}
+.creator a{color:#9a8cff}
+.cta{margin-top:12px;background:#23c483;border:0;color:#052012;padding:10px 14px;border-radius:10px;font-weight:800;cursor:pointer}
+.enrolled{margin-top:8px;opacity:.8}
+
+.right{
+  position:relative;
+  pointer-events:none;          /* <-- prevent overlay from eating clicks */
+}
+.ring,.ring.small{
+  position:absolute;
+  border-radius:50%;
+  border:1px solid rgba(119,99,255,.35);
+  pointer-events:none;          /* <-- decorative only */
+}
+.ring{width:260px;height:260px;right:14%;top:5%}
+.ring.small{width:160px;height:160px;right:0;top:40%}
+
+/* metrics */
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  background:#11151b;
+  border:1px solid rgba(255,255,255,.08);
+  padding:16px;
+  border-radius:18px;
+  margin:0 0 14px;
+  position:relative;
+  z-index:1;                    /* above hero */
+}
+.metric{
+  background:linear-gradient(180deg,rgba(139,92,246,.13),rgba(139,92,246,0) 80%);
+  border:1px solid rgba(139,92,246,.25);
+  border-radius:16px;
+  padding:12px;
+}
+.label{opacity:.85;font-size:.9rem}
+.value{margin-top:4px;font-weight:700}
+
+/* tabs */
+.tabs{
+  display:flex;
+  gap:10px;
+  padding:14px 0 0;
+  position:relative;
+  z-index:2;                    /* <-- ensure clickable above hero art */
+}
+.tab{
+  background:transparent;
+  color:#e7e7e7;
+  cursor:pointer;
+  border:1px solid rgba(255,255,255,.08);
+  border-bottom:2px solid transparent;
+  padding:10px 16px;
+  border-radius:12px 12px 0 0;
+}
+.tab.active{background:#151a22;border-bottom-color:#9a8cff}
+.tab:focus-visible{outline:2px solid #9a8cff;outline-offset:2px}
+
+/* tab content */
+.content{
+  padding:14px 0 0;
+  display:grid;
+  gap:16px;
+  position:relative;
+  z-index:1;
+}
+.panel{background:#151a22;border-radius:16px;padding:12px;margin-top:0}
+.header{display:flex;justify-content:space-between;align-items:center;padding:8px 10px 16px}
+.link{background:transparent;color:#9a8cff;border:0;cursor:pointer}
+
+/* testimonials grid */
+.grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media (min-width:900px){.grid{grid-template-columns:1fr 1fr}}
+
+/* related */
+.related h3{margin:6px 0 12px}
+.related .stack{display:grid;gap:12px}

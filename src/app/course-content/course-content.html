@@ -1,0 +1,8 @@
+<details class="section" open>
+  <summary>
+    <span class="title">{{ section.title }}</span>
+    <span class="mins">{{ section.minutes }}</span>
+  </summary>
+
+  <app-course-item *ngFor="let item of section.items" [item]="item"></app-course-item>
+</details>

@@ -1,0 +1,8 @@
+.panel { background: var(--surface-2); border-radius: 16px; padding: 24px; }
+h3 { margin: 18px 0 10px; font-size: 1.1rem; }
+.bullets { padding-left: 18px; line-height: 1.6; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 14px; }
+.chip { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); padding: 6px 10px; border-radius: 999px; font-size: .85rem; }
+.muted { opacity: .9; }
+.quotes { display: grid; gap: 10px; margin-top: 10px; }
+.quote { background: rgba(255,255,255,.04); border: 1px dashed rgba(255,255,255,.1); padding: 10px 12px; border-radius: 12px; font-style: italic; }
