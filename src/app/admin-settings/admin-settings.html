@@ -1,0 +1,135 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <div class="crumbs"><a>Home</a> / <span>Admin Console</span></div>
+  <h2 class="title">Admin Console</h2>
+
+  <div class="tabs">
+    <button class="tab" [class.active]="tab()==='users'" (click)="tab.set('users')">User Management</button>
+    <button class="tab" [class.active]="tab()==='banners'" (click)="tab.set('banners')">Dynamic Banner</button>
+  </div>
+
+  @if (tab()==='users') {
+    <div class="toolbar">
+      <div class="searchbox">
+        <span class="icon">🔎</span>
+        <input [value]="q()" (input)="setQuery($any($event.target).value)" placeholder="Search User" />
+      </div>
+
+      <div class="sort">
+        <span>Sort:</span>
+        <select (change)="setSort($any($event.target).value)">
+          <option value="latest" [selected]="sort()==='latest'">Latest</option>
+          <option value="name_asc" [selected]="sort()==='name_asc'">Name A–Z</option>
+          <option value="name_desc" [selected]="sort()==='name_desc'">Name Z–A</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="table">
+      <div class="thead">
+        <div>User Name</div><div>Roles</div><div>Joined Date</div><div class="right">Actions</div>
+      </div>
+
+      @for (u of paged(); track u.name) {
+        <div class="trow">
+          <div class="name">{{ u.name }}</div>
+          <div class="roles">@for (r of u.roles; track r) { <span class="badge">{{ r }}</span> }</div>
+          <div>{{ u.joined | date:'MM/dd/yyyy' }}</div>
+          <div class="right"><button class="link" (click)="openEdit(u)">Edit</button></div>
+        </div>
+      }
+    </div>
+
+    <div class="footer">
+      <div class="total">TOTAL RECORDS: {{ total() }}</div>
+      <div class="pager">
+        <button (click)="setPage(1)" [disabled]="page()===1">«</button>
+        <button (click)="setPage(page()-1)" [disabled]="page()===1">‹</button>
+        <span class="page">{{ page() }}</span>
+        <button (click)="setPage(page()+1)" [disabled]="page()===pages()">›</button>
+        <button (click)="setPage(pages())" [disabled]="page()===pages()">»</button>
+      </div>
+      <div class="ppage"><span>10 / Page</span></div>
+    </div>
+  }
+
+  @if (tab()==='banners') {
+    <h3 class="section">Home page banner</h3>
+
+    <div class="banners">
+      @for (b of store.banners(); track b.id) {
+        <div class="banner">
+          <img [src]="b.url" alt="{{b.name}}">
+          <div class="actions">
+            <button title="refresh" (click)="store.refresh(b.id)">⟳</button>
+            <button title="delete" (click)="store.remove(b.id)">🗑️</button>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="addlink">Add another</div>
+    <app-add-banner></app-add-banner>
+
+    <div class="controls">
+      <div class="vsel">
+        <label>Make this visible</label>
+        <select (change)="onVisibleChange($any($event.target).value)">
+          <option value="now">Show now</option>
+          <option value="later" selected>Schedule for later</option>
+        </select>
+      </div>
+
+      <div class="date">
+        <label>Schedule Date</label>
+        <input type="date" (change)="onScheduleChange($any($event.target).value)">
+      </div>
+
+      <div class="date">
+        <label>Expiry Date</label>
+        <input type="date" (change)="onExpiryChange($any($event.target).value)">
+      </div>
+    </div>
+  }
+
+  @if (showEdit()) {
+    <div class="modal-backdrop" (click)="closeEdit()"></div>
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Edit User</h3>
+        <button class="x" (click)="closeEdit()">✕</button>
+      </div>
+
+      <div class="profile">
+        <img class="avatar" src="https://i.pravatar.cc/64" alt="">
+        <div class="info">
+          <div class="name">{{ currentUser()?.name }}</div>
+          <div class="meta">harryshimron@mail.com</div>
+          <div class="meta">Bangalore, India | Since 14 August 2017</div>
+        </div>
+        <div class="tags"><span class="badge">Author 1234</span><span class="badge">Blogger 1234</span></div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="v">4.5 hrs / week</div><div class="k">Learning Hours</div></div>
+        <div class="stat"><div class="v">2</div><div class="k">Pending Courses</div></div>
+        <div class="stat"><div class="v">6</div><div class="k">Rated Courses</div></div>
+      </div>
+
+      <div class="history">
+        @for (c of ['Artificial Intelligence Professional Certificate','Machine Learning A–Z: AI, Python & R','Python for Data Science','Tableau for Beginners']; track c) {
+          <div class="course">
+            <div class="ttl">{{ c }}</div>
+            <div class="cmp">100% Complete</div>
+          </div>
+        }
+      </div>
+
+      <div class="modal-actions">
+        <button class="ghost" (click)="closeEdit()">Cancel</button>
+        <button class="primary" (click)="closeEdit()">Save Changes</button>
+      </div>
+    </div>
+  }
+</div>

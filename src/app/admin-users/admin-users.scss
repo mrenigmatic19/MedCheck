@@ -1,0 +1,24 @@
+:host{display:block;color:#e8edf5}
+.toolbar{display:flex;align-items:center;justify-content:space-between;margin:12px 0}
+.tabs{display:flex;gap:16px}
+.tab{background:transparent;border:none;color:#a7ffcf;border-bottom:2px solid #a7ffcf;padding:8px 2px;cursor:default}
+.sort{color:#c7cfdd;display:flex;gap:8px;align-items:center}
+.sort select{background:#111823;border:1px solid #2f3a4a;color:#c7cfdd;border-radius:8px;padding:6px 10px}
+
+.searchbox{margin:10px 0 14px;display:flex;align-items:center;gap:10px;background:#121a25;border:1px solid #2e3a4a;border-radius:12px;padding:10px 14px;max-width:420px}
+.searchbox input{background:transparent;border:none;outline:none;color:#e8edf5;width:100%}
+
+.table{border-radius:14px;overflow:hidden;background:linear-gradient(180deg,#2a3345,#2b3250);border:1px solid #3b4a63}
+.thead,.trow{display:grid;grid-template-columns:2.2fr 1.6fr 1.2fr .8fr;gap:12px;padding:12px 18px}
+.thead{background:#0e1520;color:#e6eefb;font-weight:600}
+.trow{border-top:1px solid rgba(255,255,255,.08)}
+.name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.roles{display:flex;gap:8px;flex-wrap:wrap}
+.badge{background:#0b2b3a;border:1px solid #4fb3ff;border-radius:8px;padding:2px 8px;font-size:12px}
+.right{text-align:right}
+.link{background:transparent;border:none;color:#9ac6ff;cursor:pointer}
+
+.footer{display:flex;align-items:center;justify-content:space-between;margin:8px 2px 0 2px;color:#8fa0b6}
+.pager{display:flex;align-items:center;gap:6px}
+.pager button{background:#0f1622;border:1px solid #2e3a4a;border-radius:6px;padding:4px 8px;color:#c7cfdd}
+.page{background:#1f9b6c;color:#fff;border-radius:6px;padding:4px 8px;margin:0 2px}

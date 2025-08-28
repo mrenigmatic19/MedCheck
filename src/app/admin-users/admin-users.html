@@ -1,0 +1,59 @@
+<div class="toolbar">
+  <div class="tabs">
+    <button class="tab active">User Management</button>
+    <button class="tab">Dynamic Banner</button>
+  </div>
+
+  <div class="sort">
+    <span>Sort:</span>
+    <select (change)="s.setSort($any($event.target).value)">
+      <option value="latest"    [selected]="s.sort()==='latest'">Latest</option>
+      <option value="name_asc"  [selected]="s.sort()==='name_asc'">Name A–Z</option>
+      <option value="name_desc" [selected]="s.sort()==='name_desc'">Name Z–A</option>
+    </select>
+  </div>
+</div>
+
+<div class="searchbox">
+  <span class="icon">🔎</span>
+  <input
+    [value]="s.q()"
+    (input)="s.setQuery($any($event.target).value)"
+    placeholder="Search User" />
+</div>
+
+<div class="table">
+  <div class="thead">
+    <div>User Name</div>
+    <div>Roles</div>
+    <div>Joined Date</div>
+    <div class="right">Actions</div>
+  </div>
+
+  @for (u of s.pagedUsers(); track u.name) {
+    <div class="trow">
+      <div class="name">{{ u.name }}</div>
+      <div class="roles">
+        @for (r of u.roles; track r) {
+          <span class="badge">{{ r }}</span>
+        }
+      </div>
+      <div>{{ u.joined | date:'MM/dd/yyyy' }}</div>
+      <div class="right">
+        <button class="link">Edit</button>
+      </div>
+    </div>
+  }
+</div>
+
+<div class="footer">
+  <div class="total">TOTAL RECORDS: {{ s.totalUsers() }}</div>
+  <div class="pager">
+    <button (click)="s.setPage(1)" [disabled]="s.page()===1">«</button>
+    <button (click)="s.setPage(s.page()-1)" [disabled]="s.page()===1">‹</button>
+    <span class="page">{{ s.page() }}</span>
+    <button (click)="s.setPage(s.page()+1)" [disabled]="s.page()===pages()">›</button>
+    <button (click)="s.setPage(pages())" [disabled]="s.page()===pages()">»</button>
+  </div>
+  <div class="ppage"><span>10 / Page</span></div>
+</div>

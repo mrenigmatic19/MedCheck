@@ -1,0 +1,7 @@
+<div class="dd" (dragover)="onOver($event)" (drop)="onDrop($event)">
+    <input #file type="file" accept="image/*" (change)="onPick($event)" hidden>
+    <div class="dd-inner" (click)="file.click()">
+      <div class="icon">🖼️</div>
+      <div class="text">Drag and Drop files here, or <span class="link">Choose file</span>.</div>
+    </div>
+  </div>

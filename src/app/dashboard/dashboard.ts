@@ -7,10 +7,12 @@ import { Navbar } from "../navbar/navbar";
 import { CarouselModule, Carousel, CarouselResponsiveOptions } from 'primeng/carousel';
 import { CrouselContainer } from "../crousel-container/crousel-container";
 import { NavCard } from "../nav-card/nav-card";
+import { AdminUsers } from "../admin-users/admin-users";
+import { AdminSettings } from "../admin-settings/admin-settings";
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [Dashbanner, MetricsCard, BlogCard, CourseCard, Navbar, Carousel, CrouselContainer, NavCard],
+  imports: [Dashbanner, MetricsCard, BlogCard, CourseCard, Navbar, Carousel, CrouselContainer, NavCard, AdminUsers, AdminSettings],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss'
 })
